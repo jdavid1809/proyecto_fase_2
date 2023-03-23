@@ -1,7 +1,46 @@
+import Implements.MenusImpl
+import Models.Cliente
+import java.lang.Exception
 
+var NO_TICKET:Int = 1000
+var NO_CLIENTE:Int = 1000
 
 fun main() {
+    var clientes = listOf<Cliente>()
+    var cliente: Cliente
+    var opcion = 0
+    val menu = MenusImpl()
+    do {
+        println("""
+            ***** Complejo CInematográfico BEDU *****
+            *****       	Bienvenido	    	*****
+            
+            1. Iniciar sesion
+            2. Registrar usuario
+            3. Salir
+        """.trimIndent())
+        print("Ingrese la opcion deseada: ")
+        opcion = readln().toInt()
+        when(opcion){
+            1->{
+                try {
+                    cliente = menu.loggin(clientes)
+                    menu.menu()
+                }catch (e: Exception){
+                    println("Error al iniciar sesion: ${e.message}")
+                }
+            }
+            2->{
+                clientes = menu.register(NO_CLIENTE++,clientes)
+            }
+            3->break
+            else-> println("Opcion no valida")
+        }
+    }while (opcion != 3)
+}
 
+
+/*
     println(" ")
     println("***** Complejo CInematográfico BEDU *****")
     println(" ")
@@ -35,6 +74,8 @@ fun main() {
         } else {
             println("Tienes que elegir (N) o (R) solamente.")
         }
+
+
 }
 
 fun verifyAge(nombre: Any){
@@ -46,4 +87,4 @@ fun verifyAge(nombre: Any){
     } else {
         println("El usuario $nombre es menor de edad y no podemos venderle boletos.")
     }
-}
+}*/
