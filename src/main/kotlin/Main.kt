@@ -4,12 +4,16 @@ import java.lang.Exception
 
 var NO_TICKET:Int = 1000
 var NO_CLIENTE:Int = 1000
+var clientes = listOf<Cliente>()
 
 fun main() {
-    var clientes = listOf<Cliente>()
+    menuLogging()
+}
+
+fun menuLogging(){
     var cliente: Cliente
-    var opcion = 0
     val menu = MenusImpl()
+    var opcion = 0
     do {
         println("""
             ***** Complejo CInematográfico BEDU *****
@@ -37,6 +41,7 @@ fun main() {
             else-> println("Opcion no valida")
         }
     }while (opcion != 3)
+
 }
 
 
