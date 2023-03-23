@@ -7,6 +7,7 @@ var NO_CLIENTE:Int = 1000
 var clientes = listOf<Cliente>()
 
 fun main() {
+    clientes = inicializarClientes()
     menuLogging()
 }
 
@@ -42,6 +43,19 @@ fun menuLogging(){
         }
     }while (opcion != 3)
 
+}
+
+fun inicializarClientes():List<Cliente>{
+    var clientesAux = mutableListOf<Cliente>()
+    var cliente1:Cliente = Cliente(NO_CLIENTE++,"Javier",27,"javier@gmail.com","contra1000")
+    clientesAux.add(cliente1)
+    var cliente2:Cliente = Cliente(NO_CLIENTE++,"David",28,"david@gmail.com","contra1001")
+    clientesAux.add(cliente2)
+    var cliente3:Cliente = Cliente(NO_CLIENTE++,"Flor",24,"flor@gmail.com","contra1002")
+    clientesAux.add(cliente3)
+    var cliente4:Cliente = Cliente(NO_CLIENTE++,"Areli",25,"areli@gmail.com","contra1003")
+    clientesAux.add(cliente4)
+    return clientesAux
 }
 
 
