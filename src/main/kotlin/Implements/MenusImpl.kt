@@ -4,7 +4,7 @@ import Interface.IMenus
 import Models.Cliente
 
 class MenusImpl:IMenus {
-    override fun menu() {
+    override fun menu(cliente: Cliente) {
         var opcion:Int
         do {
             println("SELECCIONE LA OPCION DESEADA")
@@ -20,6 +20,26 @@ class MenusImpl:IMenus {
                 println("Se necesita una opcion numerica: ${e.message}")
                 opcion = 0
             }
+            when(opcion){
+                1->{
+                    //TODO: Comportamiento con la calse peliculas
+                }
+                2-> {
+                    //TODO: Comportamiento con la clase alimentos
+                }
+                3->{
+                    //TODO: Comportamiento con la clase combo
+                }
+                4->{
+                    //TODO: Comportamiento con la clase ticket
+                }
+                5->{
+                    println("Gracias por su visita")
+                    break
+                }
+                else-> println("Selecciona una opcion valida")
+            }
+
         }while (opcion != 5)
     }
 
