@@ -30,7 +30,7 @@ fun menuLogging(){
             1->{
                 try {
                     cliente = menu.loggin(clientes)
-                    menu.menu()
+                    menu.menu(cliente)
                 }catch (e: Exception){
                     println("Error al iniciar sesion: ${e.message}")
                 }
