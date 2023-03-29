@@ -7,12 +7,12 @@ class MenusImpl:IMenus {
     override fun menu(cliente: Cliente) {
         var opcion:Int
         do {
+            println("BIENVENIDO ${cliente.getName().uppercase()}")
             println("SELECCIONE LA OPCION DESEADA")
             println("1. Seleccionar pelicula")
             println("2. Seleccionar alimentos")
-            println("3. Seleccionar combos")
-            println("4. Generar ticket")
-            println("5. Cerrar sesion")
+            println("3. Generar ticket")
+            println("4. Cerrar sesion")
             print("\nOpcion: ")
             try {
                 opcion = readln().toInt()
@@ -28,25 +28,22 @@ class MenusImpl:IMenus {
                     //TODO: Comportamiento con la clase alimentos
                 }
                 3->{
-                    //TODO: Comportamiento con la clase combo
-                }
-                4->{
                     //TODO: Comportamiento con la clase ticket
                 }
-                5->{
+                4->{
                     println("Gracias por su visita")
                     break
                 }
                 else-> println("Selecciona una opcion valida")
             }
 
-        }while (opcion != 5)
+        }while (opcion != 4)
     }
 
     override fun loggin(clientes: List<Cliente>):Cliente {
         var noCliente:Int
         var contraseña:String
-        println("INICIO DE SESION")
+        println("\nINICIO DE SESION")
         print("Numero Cliente: ")
         noCliente = readln().toInt()
         print("Contraseña: ")
