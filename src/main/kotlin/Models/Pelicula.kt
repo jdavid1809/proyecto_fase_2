@@ -53,5 +53,13 @@ class Pelicula(
         this.director = director
     }
 
+    override fun toString(): String {
+        return "Titulo: $nombre\n" +
+                "Duracion: $duracion minutos\n" +
+                "Genero: $genero\n" +
+                "Año de lanzamiento: $año\n" +
+                "Director: $director\n"
+    }
+
 
 }
