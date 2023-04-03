@@ -3,11 +3,12 @@ package Implements
 import Interface.IMenus
 import Models.*
 
+var NO_TICKET:Int = 1000
 class MenusImpl:IMenus {
     override fun menu(cliente: Cliente, salas: List<Sala>) {
         var opcion:Int
-        var peliculaSeleccionada:PeliculaSeleccionada
-        var consumibles:Consumibles
+        var peliculaSeleccionada: PeliculaSeleccionada? = null
+        var costoTienda:Double = 0.0
         do {
             println("BIENVENIDO ${cliente.getName().uppercase()}")
             println("SELECCIONE LA OPCION DESEADA")
@@ -29,7 +30,7 @@ class MenusImpl:IMenus {
                 }
                 2-> {
                     store()
-                    var costoTienda = total
+                    costoTienda = total
                     println("""
                         Usted compro
                         ${compras}
@@ -37,7 +38,11 @@ class MenusImpl:IMenus {
                     """.trimIndent())
                 }
                 3->{
-                    //TODO: Comportamiento con la clase ticket
+                    if (peliculaSeleccionada == null) println("Debe seleccionar una pelicula")
+                    else {
+                        var ticket: Ticket = Ticket(NO_TICKET++, cliente, peliculaSeleccionada!!, costoTienda)
+                        println(ticket)
+                    }
                 }
                 4->{
                     println("Gracias por su visita")
@@ -125,7 +130,6 @@ class MenusImpl:IMenus {
             asientosSeleccionados,
             salas[seleccionPelicula-1].getFuncion()[seleccionFuncion].getHorario()
         )
-        println("Detalle de sus boletos:\n$peliculaSeleccionada")
         return peliculaSeleccionada
     }
     fun buscarFuncion(sala: Sala):Int{
