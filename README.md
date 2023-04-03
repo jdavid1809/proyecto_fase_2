@@ -23,3 +23,8 @@ Proyecto para simular la operación de una aplicación de escritorio de compra y
 Selección de complejo, película, horario y sala, venta de alimentos. 
 
 Al seleccionar lo anterior, tendrá una rutina para el cobro de los tickets, se cobrará el costo de los tickets con tarjeta de débito o crédito.
+
+# DOCUMENTO
+
+Enlace al documento:
+https://tacticati-my.sharepoint.com/:w:/p/ufalcon/EW1eQ4Za8gxNpeCA5BgUXawBRn6nRRp0rjvD9PLDyJNg7Q?e=53tRjG
