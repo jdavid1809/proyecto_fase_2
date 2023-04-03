@@ -1,18 +1,19 @@
 package Implements
 
 import Interface.IMenus
-import Models.Cliente
+import Models.*
 
 class MenusImpl:IMenus {
-    override fun menu(cliente: Cliente) {
+    override fun menu(cliente: Cliente, salas: List<Sala>) {
         var opcion:Int
+        var peliculaSeleccionada:PeliculaSeleccionada
         do {
+            println("BIENVENIDO ${cliente.getName().uppercase()}")
             println("SELECCIONE LA OPCION DESEADA")
             println("1. Seleccionar pelicula")
             println("2. Seleccionar alimentos")
-            println("3. Seleccionar combos")
-            println("4. Generar ticket")
-            println("5. Cerrar sesion")
+            println("3. Generar ticket")
+            println("4. Cerrar sesion")
             print("\nOpcion: ")
             try {
                 opcion = readln().toInt()
@@ -22,31 +23,29 @@ class MenusImpl:IMenus {
             }
             when(opcion){
                 1->{
-                    //TODO: Comportamiento con la calse peliculas
+                    peliculaSeleccionada = obtenerBoletos(salas)
+                    println("Usted seleciono la pelicula\n${peliculaSeleccionada}")
                 }
                 2-> {
                     //TODO: Comportamiento con la clase alimentos
                 }
                 3->{
-                    //TODO: Comportamiento con la clase combo
-                }
-                4->{
                     //TODO: Comportamiento con la clase ticket
                 }
-                5->{
+                4->{
                     println("Gracias por su visita")
                     break
                 }
                 else-> println("Selecciona una opcion valida")
             }
 
-        }while (opcion != 5)
+        }while (opcion != 4)
     }
 
     override fun loggin(clientes: List<Cliente>):Cliente {
         var noCliente:Int
         var contraseña:String
-        println("INICIO DE SESION")
+        println("\nINICIO DE SESION")
         print("Numero Cliente: ")
         noCliente = readln().toInt()
         print("Contraseña: ")
@@ -94,4 +93,52 @@ class MenusImpl:IMenus {
         println(cliente)
         return clientesAux
     }
+
+    fun obtenerBoletos(salas: List<Sala>): PeliculaSeleccionada {
+        var opcion:Int
+        var seleccionPelicula:Int
+        var seleccionFuncion: Int = -1
+        var funcionCorrecta:Int = 0
+        var asientosSeleccionados:List<String>
+        var peliculaSeleccionada: PeliculaSeleccionada
+        for(i in salas) println("$i\n")
+        println("Seleccione una SALA:\nsolo se puede seleccionar una sala")
+        seleccionPelicula = readln().toInt()
+        while (funcionCorrecta == 0){
+            if (seleccionFuncion != -1) funcionCorrecta = 1
+            else seleccionFuncion = buscarFuncion(salas[seleccionPelicula-1])
+        }
+        println("Selecciono la funcion ${salas[seleccionPelicula-1].getFuncion()[seleccionFuncion]}")
+        println("Seleccione sus asientos")
+        salas[seleccionPelicula-1].getFuncion()[seleccionFuncion].mostrarAsientos()
+        asientosSeleccionados = salas[seleccionPelicula-1].getFuncion()[seleccionFuncion].seleccionarAsientos()
+        peliculaSeleccionada = PeliculaSeleccionada(
+            salas[seleccionPelicula-1].getPelicula().getNombre(),
+            seleccionPelicula,
+            asientosSeleccionados,
+            salas[seleccionPelicula-1].getFuncion()[seleccionFuncion].getHorario()
+        )
+        println("Detalle de sus boletos:\n$peliculaSeleccionada")
+        return peliculaSeleccionada
+    }
+    fun buscarFuncion(sala: Sala):Int{
+        var seleccionFuncion:Int
+        var i:Int = 0
+        println("Seleccione una funcion:")
+        while (i < sala.getFuncion().size){
+            println("${i+1}. ${sala.getFuncion()[i]}")
+            i++
+        }
+        try {
+            seleccionFuncion = readln().toInt()
+            if (seleccionFuncion == 1 ||seleccionFuncion == 2||seleccionFuncion == 3) return (seleccionFuncion-1)
+            else return -1
+        }catch (e: NumberFormatException) {
+            println("Se necesita una opcion numerica: ${e.message}")
+            return -1
+        }
+
+    }
+
+
 }
