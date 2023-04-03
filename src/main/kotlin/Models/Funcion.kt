@@ -77,7 +77,7 @@ class Funcion(
                 try {
                     println("Seleccione una columna (1-$tamColumn)")
                     columnaDeseada = readln().toInt()
-                    println("Seleccione una fila (A-${(tamFila+64).toChar()})")
+                    println("Seleccione una fila (1-${tamFila})")
                     var filaDeseada = readln().toInt()
                     this.asientos[filaDeseada-1][columnaDeseada-1] = 'S'
                     banderaAsientosCorr=true
