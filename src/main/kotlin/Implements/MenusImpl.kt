@@ -7,6 +7,7 @@ class MenusImpl:IMenus {
     override fun menu(cliente: Cliente, salas: List<Sala>) {
         var opcion:Int
         var peliculaSeleccionada:PeliculaSeleccionada
+        var consumibles:Consumibles
         do {
             println("BIENVENIDO ${cliente.getName().uppercase()}")
             println("SELECCIONE LA OPCION DESEADA")
@@ -27,7 +28,13 @@ class MenusImpl:IMenus {
                     println("Usted seleciono la pelicula\n${peliculaSeleccionada}")
                 }
                 2-> {
-                    //TODO: Comportamiento con la clase alimentos
+                    store()
+                    var costoTienda = total
+                    println("""
+                        Usted compro
+                        ${compras}
+                        Costo de $costoTienda
+                    """.trimIndent())
                 }
                 3->{
                     //TODO: Comportamiento con la clase ticket
