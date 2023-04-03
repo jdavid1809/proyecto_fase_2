@@ -5,7 +5,6 @@ import Models.Pelicula
 import Models.Sala
 import java.lang.Exception
 
-var NO_TICKET:Int = 1000
 var NO_CLIENTE:Int = 1000
 var clientes = listOf<Cliente>()
 var salas = listOf<Sala>()
